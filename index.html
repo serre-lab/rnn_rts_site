@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Computing a human-like reaction time metric from stable recurrent vision models">
+        <meta name="keywords" content="Brown,Vision, RNN, reaction times, alignment, equilibirium dynamics, decision making, computer science">
+        <title>RT RNN</title>
+        <link rel="stylesheet" href="rnn_rts_files/main.css">
+        <style type="text/css">
+        .layered-paper-big {
+        /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+        0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The top layer shadow */
+        5px 5px 0 0px #fff,
+        /* The second layer */
+        5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The second layer shadow */
+        10px 10px 0 0px #fff,
+        /* The third layer */
+        10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The third layer shadow */
+        15px 15px 0 0px #fff,
+        /* The fourth layer */
+        15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fourth layer shadow */
+        20px 20px 0 0px #fff,
+        /* The fifth layer */
+        20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+        /* The fifth layer shadow */
+        25px 25px 0 0px #fff,
+        /* The fifth layer */
+        25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+        /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+        }
+        </style>
+        <style id="style-1-cropbar-clipper">
+        /* Copyright 2014 Evernote Corporation. All rights reserved. */
+        .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+        }
+        .auth-name {
+        color: #6D214F;
+        }
+        .email {
+        color: #6D214F;
+        }
+        .rowimg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .columnimg {
+        display: inline-block;
+        padding: 5px;
+        margin: 10px;
+        }
+        .masonry-ite {
+        margin-bottom: 10px;
+        width: 20%;
+        }
+        .masonry-cont {
+        margin: 0 auto;
+        }
+        .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+        }
+        </style>
+    </head>
+    <body data-gr-c-s-loaded="true">
+        <div class="outercontainer">
+            <div class="container">
+                <div class="content project_title">
+                    <h1>Computing a human-like reaction time metric from stable recurrent vision models</h1>
+                </div>
+                <div class="content project_headline">
+                    <center>
+                    <h2>
+                    <div style="justify-content: center;">
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">Lore Goetschalckx*</div>
+                            <div style="font-size:15px">Brown University</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">l o r e _ g o e t s c h a l c k x @ b r o w n . e d u</p>
+                            </div>
+                        </div>
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">Lakshmi N Govindarajan*</div>
+                            <div style="font-size:15px">Massachusetts Institute of Technology
+                            (MIT)</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">l a k s h m i n @ m i t . e d u</p>
+                            </div>
+                        </div>
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">Alekh K Ashok</div>
+                            <div style="font-size:15px">Brown University</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">a l e k h _ k a r k a d a _ a s h o k @ b r o w n . e d u</p>
+                                <!--                                    <a style="color:#6D214F" href="mailto:alekh_karkada_ashok@brown.edu">alekh_karkada_ashok,</a>-->
+                            </div>
+                        </div>
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">Aarit Ahuja</div>
+                            <div style="font-size:15px">Brown University</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">a a r i t _ a h u j a @ b r o w n . e d u</p>
+                                <!--                                    <a style="color:#6D214F" href="mailto:rex_liu@brown.edu">rex_liu,</a>-->
+                            </div>
+                        </div>
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">David Sheinberg</div>
+                            <div style="font-size:15px">Brown University</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">d a v i d _ s h e i n b e r g@ b r o w n . e d u</p>
+                                <!--                                    <a style="color:#6D214F" href="mailto:rex_liu@brown.edu">rex_liu,</a>-->
+                            </div>
+                        </div>
+                        <div align="center" style="display: inline-block; margin: 10px">
+                            <div class="auth-name">Thomas Serre</div>
+                            <div style="font-size:15px">Brown University</div>
+                            <div style="font-size:15px;">
+                                <p style="color:#6D214F; margin:0">t h o m a s _ s e r r e @ b r o w n . e d u</p>
+                                <!--                                    <a style="color:#6D214F" href="mailto:thomas_serre@brown.edu">thomas_serre}@brown.edu</a>-->
+                            </div>
+                        </div>
+                        </h2>
+                        </center>
+                    </div>
+                    <div class="content project_headline">
+                        <center>
+                        <h2>
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <!--                                     <td width="150px" align="center">
+                                        <center>
+                                        <span style="font-size:18px"></span>
+                                        </center>
+                                    </td> -->
+                                    <td width="200px" align="center">
+                                        <center>
+                                        <span style="font-size:18px">Code <a style="color:#6D214F" href="https://github.com/serre-lab/rnn_rts"> [GitHub]</a></span>
+                                        </center>
+                                    </td>
+                                    <td width="200px" align="center">
+                                        <center>
+                                        <span style="font-size:18px">arXiv 2023<a style="color:#6D214F" href=""> [Paper]</a></span>
+                                        </center>
+                                    </td>
+                                    <!--                                     <td width="150px" align="center">
+                                        <center>
+                                        <span style="font-size:18px"></span>
+                                        </center>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        </h2>
+                        </center>
+                    </div>
+                    <div class="content project_headline">
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="rnn_rts_files/figures/figure1.PNG" alt="Teaser" style="margin:auto;max-width:60%">
+                        </div>
+                        <div class="text">
+                            <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 1:</b> Computing a reaction time metric from a recurrent vision model. <b>(a)</b> A schematic representation of training a cRNN with evidential deep learning (EDL; Sensoy 2018). Model outputs are interpreted as parameters (&alpha;) of a Dirichlet distribution over class probability estimates, with higher values (symbolized here by a darker gray) reflecting more generated evidence in favor of the corresponding class. In this framework, the width of the distribution signals the model's uncertainty (&epsilon;) about its predictions. <b>(b)</b> Visualization of our metric, &xi;<sub>cRNN</sub>, computed for an example stimulus (see Panel a) used in the task studied in the paper. The metric, denoted &xi;<sub>cRNN</sub>, is defined as the area under the uncertainty curve, i.e., the evolution of uncertainty (&epsilon;) over time.</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text" style="font-size:18px;padding-left:10px;padding-right:10px">
+                            <h3>Abstract</h3>
+                            <p>The meteoric rise in the adoption of deep neural networks as computational models of vision has inspired efforts to "align" these models with humans. One dimension of interest for alignment includes behavioral choices, but moving beyond characterizing choice patterns to capturing temporal aspects of visual decision-making has been challenging. Here, we sketch a general-purpose methodology to construct computational accounts of reaction times from a stimulus-computable, task-optimized model. Specifically, we introduce a novel metric leveraging insights from subjective logic theory summarizing evidence accumulation in recurrent vision models. We demonstrate that our metric aligns with patterns of human reaction times for stimulus manipulations across four disparate visual decision-making tasks spanning perceptual grouping, mental simulation, and scene categorization. This work paves the way for exploring the temporal alignment of model and human visual strategies in the context of various other cognitive tasks toward generating testable hypotheses for neuroscience.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text" style="font-size:18px;padding-left:5px;padding-right:5px">
+                            <h3>Contributions</h3>
+                            <div class="text">
+                                <p><b> (1) </b> We introduce a novel computational framework to train, analyze, and interpret the behavior of cRNNs on visual cognitive tasks of choice. Our framework triangulates insights from an attractor dynamics-based training routine and evidential learning theory to support stable and expressive evidence accumulation strategies.</p>
+                            </div>
+                            <div class="text">
+                                <p><b> (2) </b> We derive a stimulus-computable, task- and model-agnostic metric to characterize evidence accumulation in cRNNs. Our metric does not require extra supervision and purely leverages internal cRNN activity dynamics. </p>
+                            </div>
+                            <div>
+                                <div class="text">
+                                    <p><b> (3) </b> We comprehensively demonstrate the efficacy of our metric in capturing stimulus-dependent primate decision time courses in the form of reaction times (RTs) in four disparate visual cognitive challenges that include serial grouping, mental simulation, and scene categorization. To the best of our knowledge, this is the first demonstration of qualitative temporal alignments between models and primates across task paradigms. </p>
+                                    <div class="img" style="text-align:center">
+                                        <img class="img_responsive" src="rnn_rts_files/figures/figure2.png" alt="Teaser" style="margin:auto;max-width:70%">
+                                    </div>
+                                    <div class="text">
+                                        <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 2:</b> Human versus cRNN temporal alignment on an incremental grouping task. <b> (a) </b> Description of the task (inspired by cognitive neuroscience studies). <b>(b)</b> Visualization of the cRNN dynamics. The two lines represent the average latent trajectories across 1K validation stimuli labeled "yes" and "no" respectively. Marker size indicates average uncertainty &epsilon; across the same stimuli. Evident from the graph is that the two trajectories start to diverge after some initial time passes, clearly separating the two classes. Owing to the C-RBP training algorithm and attesting to the dynamics approaching an equilibrium, the step sizes become increasingly small over time. We also include snapshots of the latent activity in the cRNN for two example stimuli (one "yes", one "no"; see Panel a) along the respective trajectory. Notice the spread of activity over time. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI.  <b>(c)</b> Comparison against data from the experiment with human participants in Jeurissen (2016). The position of one dot (white, labeled "Fix") was kept constant, while the position of the other was manipulated to create experimental conditions of varying difficulty. These manipulations have qualitatively similar effects on the cRNN as they do on human behavior. Error bars represent the standard error of the mean. The &alpha; levels for shown contrasts were adjusted downward from .1 (*), .05*, .01**, and .001*** using Bonferroni. The spatial uncertainty map shown on the right visualizes the spatial anisotropy observed in the model for the same example stimulus shown on the left.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text">
+                                    <img class="img_responsive" src="rnn_rts_files/figures/figure3.PNG" alt="Teaser" style="margin:auto;max-width:70%">
+                                </div>
+                                <div class="text">
+                                    <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 3: &xi;<sub>cRNN</sub></b> captures the spatial anisotropy in model RTs. We present spatial uncertainty (SU) maps to visualize the impact a given fixation location will have on model RTs when the cue dot position is varied. Higher (lower) values of &xi;<sub>cRNN</sub> represent slower (faster) model responses.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text">
+                                    <img class="img_responsive" src="rnn_rts_files/figures/figure5.PNG" alt="Teaser" style="margin:auto;max-width:70%">
+                                </div>
+                                <div class="text">
+                                    <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 4: </b> cRNN learns filling-in strategy to solve mazes. <b> a.</b> Task description. <b>b.</b> The cRNN model takes more time to solve mazes with longer path lengths, an effect previously found in human participants too. <b>c.</b> Latent activity visualizations for two yes-mazes. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI. <b>d.</b> Uncertainty curves for the two inputs shown in Panel c. The cRNN remains uncertain for much longer for the maze featuring the longest path. The uncertainty evolution is visualized dynamically in conjunction with the change in latent activity in the supplementary videos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="text">
+                        <h3>Incremental grouping</h3>
+                    </div>
+                </div>
+                <div class="slideshow-container">
+
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_7326.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_4266.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1676.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5284.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_2658.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_4071.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6718.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6867.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6663.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2175.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3241.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_34.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_8075.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5918.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1110.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_8078.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2789.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3453.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_48.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_984.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6053.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6526.gif" alt="cocogif">
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                    <span class="dot" onclick="currentSlide(8)"></span>
+                    <span class="dot" onclick="currentSlide(9)"></span>
+                    <span class="dot" onclick="currentSlide(10)"></span>
+                    <span class="dot" onclick="currentSlide(11)"></span>
+                    <span class="dot" onclick="currentSlide(12)"></span>
+                    <span class="dot" onclick="currentSlide(13)"></span>
+                    <span class="dot" onclick="currentSlide(14)"></span>
+                    <span class="dot" onclick="currentSlide(15)"></span>
+                    <span class="dot" onclick="currentSlide(16)"></span>
+                    <span class="dot" onclick="currentSlide(17)"></span>
+                    <span class="dot" onclick="currentSlide(18)"></span>
+                    <span class="dot" onclick="currentSlide(19)"></span>
+                    <span class="dot" onclick="currentSlide(20)"></span>
+                    <span class="dot" onclick="currentSlide(21)"></span>
+                    <span class="dot" onclick="currentSlide(22)"></span>
+                    <span class="dot" onclick="currentSlide(23)"></span>
+                </div>
+                <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+                function plusSlides(n) {
+                showSlides(slideIndex += n);
+                }
+                function currentSlide(n) {
+                showSlides(slideIndex = n);
+                }
+                function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                }
+                </script>
+                <div class="content">
+                    <div class="text">
+                        <h3>Mazes</h3>
+                    </div>
+                </div>
+                <div class="slideshow-container">
+           <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/mazes_val_4926.gif" alt="cocogif">
+
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2633.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4818.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5626.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2473.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5314.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4854.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2797.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3161.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3298.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3117.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4926.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2563.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5478.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5838.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2079.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5490.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5176.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_5813.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5714.gif" alt="cocogif">
+                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3065.gif" alt="cocogif">
+
+                    <a class="prev" onclick="plusSlidesMaze(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlidesMaze(1)">&#10095;</a>
+                </div>
+                <div style="text-align:center">
+                    <span class="dotMaze" onclick="currentSlideMaze(1)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(2)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(3)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(4)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(5)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(6)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(7)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(8)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(9)"></span>
+                    <span class="dotMaze" onclick="currentSlideMaze(10)"></span>
+                </div>
+                <script>
+                var slideIndexMaze = 1;
+                showSlidesMaze(slideIndexMaze);
+                function plusSlidesMaze(n) {
+                showSlidesMaze(slideIndexMaze += n);
+                }
+                function currentSlideMaze(n) {
+                showSlidesMaze(slideIndexMaze = n);
+                }
+                function showSlidesMaze(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlidesMaze");
+                var dots = document.getElementsByClassName("dotMaze");
+                if (n > slides.length) { slideIndexMaze = 1 }
+                if (n < 1) { slideIndexMaze = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndexMaze - 1].style.display = "block";
+                dots[slideIndexMaze - 1].className += " active";
+                }
+                </script>
+                <div class="content">
+                    <div class="text">
+                        <h3>Publication</h3>
+                        <ul>
+                            <li>
+                                <div class="title"><a>Computing a human-like reaction time metric from stable recurrent vision models</a></div>
+                                <div>
+                                    <a>Lore Goetschalckx*</a>,
+                                    <a>Lakshmi N Govindarajan*</a>,
+                                    <a>Alekh K Ashok</a>,
+                                    <a>Aarit Ahuja</a>,
+                                    <a>David Sheinberg</a>,
+                                    <a>Thomas Serre</a>
+                                    (*indicates equal contribution)
+                                </div>
+                                <div>
+                                    <span class="tag"><a href="">arXiv</a></span>
+                                    <span class="tag"><a href="https://github.com/rnn_rts">code</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text" style="text-align:left">
+                        <table px="" width="200" align="center">
+                            <tbody>
+                                <tr>
+                                    <td><a href="https://arxiv.org/abs/2005.11362"><img class="layered-paper-big" style="height:175px" src="rnn_rts_files/figures/paper_thumb.png"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="text" style="margin: 30px;font-size:8px;">
+                        <p>Website adapted from https://people.csail.mit.edu/yuewang/projects/rfs/
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="download_plus_animation"></div>
+    </body>
+</html>
