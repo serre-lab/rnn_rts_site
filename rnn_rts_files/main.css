@@ -298,22 +298,25 @@ div.anchor {
 
 
 .mySlides {
-    display: none
+    display: none;
 }
 
 .mySlidesMaze {
-    display: none
+    display: none;
+    
 }
 
 .gifs {
     vertical-align: middle;
     display: block;
     margin: auto;
+    width: 90%;
 }
 
 /* Slideshow container */
 .slideshow-container {
-    width: 400px;
+    width: 90%;
+    max-width: 600px;
     height: 400px;
     position: relative;
     margin: auto;
