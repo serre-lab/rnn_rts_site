@@ -192,240 +192,284 @@
                             <div class="text">
                                 <p><b> (2) </b> We derive a stimulus-computable, task- and model-agnostic metric to characterize evidence accumulation in cRNNs. Our metric does not require extra supervision and purely leverages internal cRNN activity dynamics. </p>
                             </div>
-                            <div>
-                                <div class="text">
-                                    <p><b> (3) </b> We comprehensively demonstrate the efficacy of our metric in capturing stimulus-dependent primate decision time courses in the form of reaction times (RTs) in four disparate visual cognitive challenges that include serial grouping, mental simulation, and scene categorization. To the best of our knowledge, this is the first demonstration of qualitative temporal alignments between models and primates across task paradigms. </p>
-                                    <div class="img" style="text-align:center">
-                                        <img class="img_responsive" src="rnn_rts_files/figures/figure2.png" alt="Teaser" style="margin:auto;max-width:70%">
-                                    </div>
-                                    <div class="text">
-                                        <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 2:</b> Human versus cRNN temporal alignment on an incremental grouping task. <b> (a) </b> Description of the task (inspired by cognitive neuroscience studies). <b>(b)</b> Visualization of the cRNN dynamics. The two lines represent the average latent trajectories across 1K validation stimuli labeled "yes" and "no" respectively. Marker size indicates average uncertainty &epsilon; across the same stimuli. Evident from the graph is that the two trajectories start to diverge after some initial time passes, clearly separating the two classes. Owing to the C-RBP training algorithm and attesting to the dynamics approaching an equilibrium, the step sizes become increasingly small over time. We also include snapshots of the latent activity in the cRNN for two example stimuli (one "yes", one "no"; see Panel a) along the respective trajectory. Notice the spread of activity over time. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI.  <b>(c)</b> Comparison against data from the experiment with human participants in Jeurissen (2016). The position of one dot (white, labeled "Fix") was kept constant, while the position of the other was manipulated to create experimental conditions of varying difficulty. These manipulations have qualitatively similar effects on the cRNN as they do on human behavior. Error bars represent the standard error of the mean. The &alpha; levels for shown contrasts were adjusted downward from .1 (*), .05*, .01**, and .001*** using Bonferroni. The spatial uncertainty map shown on the right visualizes the spatial anisotropy observed in the model for the same example stimulus shown on the left.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="text">
-                                    <img class="img_responsive" src="rnn_rts_files/figures/figure3.png" alt="Teaser" style="margin:auto;max-width:70%">
-                                </div>
-                                <div class="text">
-                                    <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 3: &xi;<sub>cRNN</sub></b> captures the spatial anisotropy in model RTs. We present spatial uncertainty (SU) maps to visualize the impact a given fixation location will have on model RTs when the cue dot position is varied. Higher (lower) values of &xi;<sub>cRNN</sub> represent slower (faster) model responses.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="text">
-                                    <img class="img_responsive" src="rnn_rts_files/figures/figure5.png" alt="Teaser" style="margin:auto;max-width:70%">
-                                </div>
-                                <div class="text">
-                                    <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 4: </b> cRNN learns filling-in strategy to solve mazes. <b> a.</b> Task description. <b>b.</b> The cRNN model takes more time to solve mazes with longer path lengths, an effect previously found in human participants too. <b>c.</b> Latent activity visualizations for two yes-mazes. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI. <b>d.</b> Uncertainty curves for the two inputs shown in Panel c. The cRNN remains uncertain for much longer for the maze featuring the longest path. The uncertainty evolution is visualized dynamically in conjunction with the change in latent activity in the supplementary videos.</p>
-                                </div>
+                            
+                            <div class="text">
+                                <p><b> (3) </b> We comprehensively demonstrate the efficacy of our metric in capturing stimulus-dependent primate decision time courses in the form of reaction times (RTs) in four disparate visual cognitive challenges that include serial grouping, mental simulation, and scene categorization. To the best of our knowledge, this is the first demonstration of qualitative temporal alignments between models and primates across task paradigms. </p>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div style="margin-top: 30px;margin-bottom: 30px;">
+                        <div class="img" style="text-align:center">
+                            <img class="img_responsive" src="rnn_rts_files/figures/figure2.png" alt="Teaser" style="margin:auto;max-width:70%">
+                        </div>
+                        <div class="text">
+                            <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 2:</b> Human versus cRNN temporal alignment on an incremental grouping task. <b> (a) </b> Description of the task (inspired by cognitive neuroscience studies). <b>(b)</b> Visualization of the cRNN dynamics. The two lines represent the average latent trajectories across 1K validation stimuli labeled "yes" and "no" respectively. Marker size indicates average uncertainty &epsilon; across the same stimuli. Evident from the graph is that the two trajectories start to diverge after some initial time passes, clearly separating the two classes. Owing to the C-RBP training algorithm and attesting to the dynamics approaching an equilibrium, the step sizes become increasingly small over time. We also include snapshots of the latent activity in the cRNN for two example stimuli (one "yes", one "no"; see Panel a) along the respective trajectory. Notice the spread of activity over time. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI.  <b>(c)</b> Comparison against data from the experiment with human participants in Jeurissen (2016). The position of one dot (white, labeled "Fix") was kept constant, while the position of the other was manipulated to create experimental conditions of varying difficulty. These manipulations have qualitatively similar effects on the cRNN as they do on human behavior. Error bars represent the standard error of the mean. The &alpha; levels for shown contrasts were adjusted downward from .1 (*), .05*, .01**, and .001*** using Bonferroni. The spatial uncertainty map shown on the right visualizes the spatial anisotropy observed in the model for the same example stimulus shown on the left.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div style="margin-top: 30px;margin-bottom: 30px;">
+                        
+                        <div class="text">
+                            <img class="img_responsive" src="rnn_rts_files/figures/figure3.png" alt="Teaser" style="margin:auto;max-width:70%">
+                        </div>
+                        <div class="text">
+                            <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 3:</b> &xi;<sub>cRNN</sub> captures the spatial anisotropy in model RTs. We present spatial uncertainty (SU) maps to visualize the impact a given fixation location will have on model RTs when the cue dot position is varied. Higher (lower) values of &xi;<sub>cRNN</sub> represent slower (faster) model responses.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text">
+                            <img class="img_responsive" src="rnn_rts_files/figures/figure5.png" alt="Teaser" style="margin:auto;max-width:70%">
+                        </div>
+                        <div class="text">
+                            <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 4: </b> cRNN learns filling-in strategy to solve mazes. <b> a.</b> Task description. <b>b.</b> The cRNN model takes more time to solve mazes with longer path lengths, an effect previously found in human participants too. <b>c.</b> Latent activity visualizations for two yes-mazes. The cRNN gradually fills the segment containing the dots. The strategy can be appreciated even better in the videos supplied in the SI. <b>d.</b> Uncertainty curves for the two inputs shown in Panel c. The cRNN remains uncertain for much longer for the maze featuring the longest path. The uncertainty evolution is visualized dynamically in conjunction with the change in latent activity in the supplementary videos.</p>
+                        </div>
+                    </div>
+                    
                 <div class="content">
+                    <div class="text" style="font-size:18px;padding-left:10px;padding-right:10px">
+                        <h3>Additional materials</h3>
+                        <h4>Incremental grouping</h4>
+                        <p> For the incremental grouping task, the cRNN learned a cognitively-viable filling-in strategy that was evident from inspecting the latent activity <b>h<sub>t</sub></b> over time steps <i>t</i> (see GIFs below). This behavior is an emergent property from purely the classification task constraint rather than direct supervision for any form of segmentation. </p>
+                    </p>
+                </div>
+            </div>
+            <div class="slideshow-container">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_7326.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_4266.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1676.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5284.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_2658.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_4071.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6718.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6867.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6663.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2175.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3241.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_34.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_8075.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5918.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1110.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_8078.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2789.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3453.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_48.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_984.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6053.gif" alt="cocogif">
+                <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6526.gif" alt="cocogif">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+                <span class="dot" onclick="currentSlide(11)"></span>
+                <span class="dot" onclick="currentSlide(12)"></span>
+                <span class="dot" onclick="currentSlide(13)"></span>
+                <span class="dot" onclick="currentSlide(14)"></span>
+                <span class="dot" onclick="currentSlide(15)"></span>
+                <span class="dot" onclick="currentSlide(16)"></span>
+                <span class="dot" onclick="currentSlide(17)"></span>
+                <span class="dot" onclick="currentSlide(18)"></span>
+                <span class="dot" onclick="currentSlide(19)"></span>
+                <span class="dot" onclick="currentSlide(20)"></span>
+                <span class="dot" onclick="currentSlide(21)"></span>
+                <span class="dot" onclick="currentSlide(22)"></span>
+            </div>
+            <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+            function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            }
+            </script>
+            <div class="content">
+                <div class="text">
                     <div class="text">
-                        <h3>Incremental grouping</h3>
-                    </div>
-                </div>
-                <div class="slideshow-container">
-
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_7326.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_4266.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1676.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5284.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_2658.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_4071.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6718.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6867.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6663.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2175.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3241.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_34.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_8075.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_5918.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_1110.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_8078.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_2789.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_3453.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_48.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_984.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/no/coco_dots_val_6053.gif" alt="cocogif">
-                    <img class="mySlides fade gifs" src="rnn_rts_files/videos_gif/incremental_grouping/yes/coco_dots_val_6526.gif" alt="cocogif">
-
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
-                <div style="text-align:center">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
-                    <span class="dot" onclick="currentSlide(6)"></span>
-                    <span class="dot" onclick="currentSlide(7)"></span>
-                    <span class="dot" onclick="currentSlide(8)"></span>
-                    <span class="dot" onclick="currentSlide(9)"></span>
-                    <span class="dot" onclick="currentSlide(10)"></span>
-                    <span class="dot" onclick="currentSlide(11)"></span>
-                    <span class="dot" onclick="currentSlide(12)"></span>
-                    <span class="dot" onclick="currentSlide(13)"></span>
-                    <span class="dot" onclick="currentSlide(14)"></span>
-                    <span class="dot" onclick="currentSlide(15)"></span>
-                    <span class="dot" onclick="currentSlide(16)"></span>
-                    <span class="dot" onclick="currentSlide(17)"></span>
-                    <span class="dot" onclick="currentSlide(18)"></span>
-                    <span class="dot" onclick="currentSlide(19)"></span>
-                    <span class="dot" onclick="currentSlide(20)"></span>
-                    <span class="dot" onclick="currentSlide(21)"></span>
-                    <span class="dot" onclick="currentSlide(22)"></span>
-                </div>
-                <script>
-                var slideIndex = 1;
-                showSlides(slideIndex);
-                function plusSlides(n) {
-                showSlides(slideIndex += n);
-                }
-                function currentSlide(n) {
-                showSlides(slideIndex = n);
-                }
-                function showSlides(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("dot");
-                if (n > slides.length) { slideIndex = 1 }
-                if (n < 1) { slideIndex = slides.length }
-                for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-                }
-                </script>
-                <div class="content">
-                    <div class="text">
-                        <h3>Mazes</h3>
-                    </div>
-                </div>
-
-                <div class="slideshow-container">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4926.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2633.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4818.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5626.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2473.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5314.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4854.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2797.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3161.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3295.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3117.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4926.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2563.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5478.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5838.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2079.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5490.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5176.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_5813.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5714.gif" alt="cocogif">
-                    <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3065.gif" alt="cocogif">
-
-                    <a class="prev" onclick="plusSlidesMaze(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlidesMaze(1)">&#10095;</a>
-                </div>
-                <div style="text-align:center">
-                    <span class="dotMaze" onclick="currentSlideMaze(1)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(2)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(3)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(4)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(5)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(6)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(7)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(8)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(9)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(10)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(11)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(12)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(13)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(14)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(15)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(16)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(17)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(18)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(19)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(20)"></span>
-                    <span class="dotMaze" onclick="currentSlideMaze(21)"></span>
-
-
-                </div>
-                <script>
-                var slideIndexMaze = 1;
-                showSlidesMaze(slideIndexMaze);
-                function plusSlidesMaze(n) {
-                showSlidesMaze(slideIndexMaze += n);
-                }
-                function currentSlideMaze(n) {
-                showSlidesMaze(slideIndexMaze = n);
-                }
-                function showSlidesMaze(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlidesMaze");
-                var dots = document.getElementsByClassName("dotMaze");
-                if (n > slides.length) { slideIndexMaze = 1 }
-                if (n < 1) { slideIndexMaze = slides.length }
-                for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndexMaze - 1].style.display = "block";
-                dots[slideIndexMaze - 1].className += " active";
-                }
-                </script>
-                <div class="content">
-                    <div class="text">
-                        <h3>Publication</h3>
-                        <ul>
-                            <li>
-                                <div class="title"><a>Computing a human-like reaction time metric from stable recurrent vision models</a></div>
-                                <div>
-                                    <a>Lore Goetschalckx*</a>,
-                                    <a>Lakshmi N Govindarajan*</a>,
-                                    <a>Alekh K Ashok</a>,
-                                    <a>Aarit Ahuja</a>,
-                                    <a>David Sheinberg</a>,
-                                    <a>Thomas Serre</a>
-                                    (*indicates equal contribution)
-                                </div>
-                                <div>
-                                    <span class="tag"><a href="http://arxiv.org/abs/2306.11582">arXiv</a></span>
-                                    <span class="tag"><a href="https://github.com/serre-lab/rnn_rts">code</a></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="text" style="text-align:left">
-                        <table px="" width="200" align="center">
-                            <tbody>
-                                <tr>
-                                    <td><a href="http://arxiv.org/abs/2306.11582"><img class="layered-paper-big" style="height:175px" src="rnn_rts_files/figures/paper_thumb.png"></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="text" style="margin: 30px;font-size:8px;">
-                        <p>Website adapted from https://people.csail.mit.edu/yuewang/projects/rfs/
-                        </p>
+                        <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>GIFs 1:</b> Filling-in strategy learned by the cRNN in order to solve the incremental grouping task. The task was to tell whether the two dots are on the same object (yes/no). The left panel visualizes the input to the model. The middle panel shows the uncertainty curve, with a marker added at every time step to indicate the progression of time. The right panel shows a visualization of the latent activity over time.</p>
                     </div>
                 </div>
             </div>
+            <div class="content">
+                <div class="text" style="font-size:18px;padding-left:10px;padding-right:10px">
+                    <p> The tool below presents spatial uncertainty (SU) maps in an interactive format. Try clicking on a dot location!</p>
+                </div>
+            </div>
+            <div class="interactive-container">
+                <iframe id='myIframe' src="http://lgoetsch.eu.pythonanywhere.com" title="iframe" style="width:100%;height:100%;border-width:0px"></iframe>
+            </div>
+
+            <div class="content">
+                <div class="text">
+                    <div class="text">
+                        <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>Figure 3 (interactive):</b> &xi;<sub>cRNN</sub> captures the spatial anisotropy in model RTs. We present spatial uncertainty (SU) maps to visualize the impact a given fixation location (colored white here) will have on model RTs when the position of the other dot is varied. Each dot configuration gives rise to its own uncertainty curve, which can be viewed by clicking on the respective cue dot location. Higher (lower) values of &xi;<sub>cRNN</sub>, the area under the uncertainty curve, represent slower (faster) model responses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text" style="font-size:18px;padding-left:10px;padding-right:10px">
+                    <h4>Mazes</h4>
+                    <p>The cRNN also learned a filling-in strategy to solve our maze task, which can be appreciated in the GIFs below. </p>
+                </div>
+            </div>
+            <div class="slideshow-container">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4926.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2633.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4818.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5626.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2473.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5314.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4854.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2797.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3161.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3295.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3117.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_4926.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2563.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5478.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5838.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_2079.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5490.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5176.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_5813.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/yes/mazes_val_5714.gif" alt="cocogif">
+                <img class="mySlidesMaze fade gifs" src="rnn_rts_files/videos_gif/mazes/no/mazes_val_3065.gif" alt="cocogif">
+                <a class="prev" onclick="plusSlidesMaze(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlidesMaze(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center">
+                <span class="dotMaze" onclick="currentSlideMaze(1)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(2)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(3)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(4)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(5)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(6)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(7)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(8)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(9)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(10)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(11)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(12)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(13)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(14)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(15)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(16)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(17)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(18)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(19)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(20)"></span>
+                <span class="dotMaze" onclick="currentSlideMaze(21)"></span>
+            </div>
+            <script>
+            var slideIndexMaze = 1;
+            showSlidesMaze(slideIndexMaze);
+            function plusSlidesMaze(n) {
+            showSlidesMaze(slideIndexMaze += n);
+            }
+            function currentSlideMaze(n) {
+            showSlidesMaze(slideIndexMaze = n);
+            }
+            function showSlidesMaze(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlidesMaze");
+            var dots = document.getElementsByClassName("dotMaze");
+            if (n > slides.length) { slideIndexMaze = 1 }
+            if (n < 1) { slideIndexMaze = slides.length }
+            for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndexMaze - 1].style.display = "block";
+            dots[slideIndexMaze - 1].className += " active";
+            }
+            </script>
+            <script>
+            function adjustIframeHeight() {
+            var iframe = document.getElementById('myIframe');
+            if (iframe.contentDocument) {
+            iframe.style.height = iframe.contentDocument.documentElement.scrollHeight + 'px';
+            }
+            }
+            // Call the adjustIframeHeight function whenever the content inside the iframe changes
+            document.getElementById('myIframe').onload = function () {
+            adjustIframeHeight();
+            };
+            </script>
+            <div class="content">
+                <div class="text">
+                    <div class="text">
+                        <p style="font-size:12px;padding-left:20px;padding-right:20px"><b>GIFs 2:</b> Filling-in strategy learned by the cRNN in order to solve the maze task. The task was to tell whether there is a path to connect the squares (yes/no). The left panel visualizes the input to the model. The middle panel shows the uncertainty curve, with a marker added at every time step to indicate the progression of time. The right panel shows a visualization of the latent activity over time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text">
+                    <h3>Publication</h3>
+                    <ul>
+                        <li>
+                            <div class="title"><a>Computing a human-like reaction time metric from stable recurrent vision models</a></div>
+                            <div>
+                                <a>Lore Goetschalckx*</a>,
+                                <a>Lakshmi N Govindarajan*</a>,
+                                <a>Alekh K Ashok</a>,
+                                <a>Aarit Ahuja</a>,
+                                <a>David Sheinberg</a>,
+                                <a>Thomas Serre</a>
+                                (*indicates equal contribution)
+                            </div>
+                            <div>
+                                <span class="tag"><a href="http://arxiv.org/abs/2306.11582">arXiv</a></span>
+                                <span class="tag"><a href="https://github.com/serre-lab/rnn_rts">code</a></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text" style="text-align:left">
+                    <table px="" width="200" align="center">
+                        <tbody>
+                            <tr>
+                                <td><a href="http://arxiv.org/abs/2306.11582"><img class="layered-paper-big" style="height:175px" src="rnn_rts_files/figures/paper_thumb.png"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="text" style="margin: 30px;font-size:8px;">
+                    <p>Website adapted from https://people.csail.mit.edu/yuewang/projects/rfs/
+                    </p>
+                </div>
+            </div>
         </div>
-        <div id="download_plus_animation"></div>
-    </body>
+    </div>
+    <div id="download_plus_animation"></div>
+</body>
 </html>
